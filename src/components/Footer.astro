@@ -1,0 +1,65 @@
+---
+import Logo from "./Logo.astro";
+---
+
+<footer class="footer">
+	<div class="container footer__inner">
+		<Logo variant="footer" />
+		<p class="footer__tagline">
+			<span class="footer__tagline-light">Escuchamos tu negocio. </span>
+			<span class="footer__tagline-em">Diseñamos su futuro digital.</span>
+		</p>
+		<span class="footer__copy">© 2026 Orbital Studio</span>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.footer__inner {
+		padding-top: 44px;
+		padding-bottom: 44px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 28px;
+		flex-wrap: wrap;
+	}
+
+	.footer__tagline {
+		margin: 0;
+		font-size: 13.5px;
+		letter-spacing: 0.02em;
+		color: rgba(255, 255, 255, 0.5);
+		flex: 1;
+		min-width: 200px;
+		text-align: center;
+	}
+
+	.footer__tagline-light {
+		font-weight: 200;
+	}
+
+	.footer__tagline-em {
+		font-style: italic;
+		font-weight: 600;
+	}
+
+	.footer__copy {
+		font-size: 13px;
+		color: rgba(255, 255, 255, 0.4);
+	}
+
+	@media (max-width: 768px) {
+		.footer__inner {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.footer__tagline {
+			text-align: left;
+		}
+	}
+</style>

@@ -1,0 +1,119 @@
+<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;">
+      <defs>
+        <linearGradient id="orb-arc" gradientUnits="userSpaceOnUse" x1="-60" y1="60" x2="1620" y2="530">
+          <stop offset="0%" stop-color="#1b2bd8"></stop>
+          <stop offset="16%" stop-color="#4a2ae8"></stop>
+          <stop offset="38%" stop-color="#7d39eb"></stop>
+          <stop offset="60%" stop-color="#8f4bf0"></stop>
+          <stop offset="76%" stop-color="#a97bf5"></stop>
+          <stop offset="88%" stop-color="#b98ff8"></stop>
+          <stop offset="95%" stop-color="#c79bff"></stop>
+          <stop offset="100%" stop-color="#7d39eb"></stop>
+        </linearGradient>
+        <linearGradient id="orb-ramp-0" gradientUnits="userSpaceOnUse" x1="-60" y1="60" x2="1620" y2="530">
+          <stop offset="0.000" stop-color="#000000"></stop>
+          <stop offset="0.090" stop-color="#6e6e6e"></stop>
+          <stop offset="0.180" stop-color="#ffffff"></stop>
+        </linearGradient>
+        <mask id="orb-mask-0" maskUnits="userSpaceOnUse" x="-400" y="-200" width="2200" height="1200">
+          <rect x="-400" y="-200" width="2200" height="1200" fill="url(#orb-ramp-0)"></rect>
+        </mask>
+        <linearGradient id="orb-ramp-1" gradientUnits="userSpaceOnUse" x1="-60" y1="60" x2="1620" y2="530">
+          <stop offset="0.000" stop-color="#000000"></stop>
+          <stop offset="0.160" stop-color="#6e6e6e"></stop>
+          <stop offset="0.320" stop-color="#ffffff"></stop>
+        </linearGradient>
+        <mask id="orb-mask-1" maskUnits="userSpaceOnUse" x="-400" y="-200" width="2200" height="1200">
+          <rect x="-400" y="-200" width="2200" height="1200" fill="url(#orb-ramp-1)"></rect>
+        </mask>
+        <linearGradient id="orb-ramp-2" gradientUnits="userSpaceOnUse" x1="-60" y1="60" x2="1620" y2="530">
+          <stop offset="0.120" stop-color="#000000"></stop>
+          <stop offset="0.300" stop-color="#6e6e6e"></stop>
+          <stop offset="0.480" stop-color="#ffffff"></stop>
+        </linearGradient>
+        <mask id="orb-mask-2" maskUnits="userSpaceOnUse" x="-400" y="-200" width="2200" height="1200">
+          <rect x="-400" y="-200" width="2200" height="1200" fill="url(#orb-ramp-2)"></rect>
+        </mask>
+        <linearGradient id="orb-ramp-3" gradientUnits="userSpaceOnUse" x1="-60" y1="60" x2="1620" y2="530">
+          <stop offset="0.280" stop-color="#000000"></stop>
+          <stop offset="0.460" stop-color="#6e6e6e"></stop>
+          <stop offset="0.640" stop-color="#ffffff"></stop>
+        </linearGradient>
+        <mask id="orb-mask-3" maskUnits="userSpaceOnUse" x="-400" y="-200" width="2200" height="1200">
+          <rect x="-400" y="-200" width="2200" height="1200" fill="url(#orb-ramp-3)"></rect>
+        </mask>
+        <linearGradient id="orb-ramp-4" gradientUnits="userSpaceOnUse" x1="-60" y1="60" x2="1620" y2="530">
+          <stop offset="0.420" stop-color="#000000"></stop>
+          <stop offset="0.600" stop-color="#6e6e6e"></stop>
+          <stop offset="0.780" stop-color="#ffffff"></stop>
+        </linearGradient>
+        <mask id="orb-mask-4" maskUnits="userSpaceOnUse" x="-400" y="-200" width="2200" height="1200">
+          <rect x="-400" y="-200" width="2200" height="1200" fill="url(#orb-ramp-4)"></rect>
+        </mask>
+        <linearGradient id="orb-ramp-5" gradientUnits="userSpaceOnUse" x1="-60" y1="60" x2="1620" y2="530">
+          <stop offset="0.540" stop-color="#000000"></stop>
+          <stop offset="0.720" stop-color="#6e6e6e"></stop>
+          <stop offset="0.900" stop-color="#ffffff"></stop>
+        </linearGradient>
+        <mask id="orb-mask-5" maskUnits="userSpaceOnUse" x="-400" y="-200" width="2200" height="1200">
+          <rect x="-400" y="-200" width="2200" height="1200" fill="url(#orb-ramp-5)"></rect>
+        </mask>
+        <linearGradient id="orb-fade-ramp" gradientUnits="userSpaceOnUse" x1="1680" y1="248" x2="1310" y2="-52">
+          <stop offset="0%" stop-color="#ffffff"></stop>
+          <stop offset="100%" stop-color="#000000"></stop>
+        </linearGradient>
+        <mask id="orb-fade" maskUnits="userSpaceOnUse" x="1100" y="-200" width="800" height="700">
+          <rect x="1100" y="-200" width="800" height="700" fill="url(#orb-fade-ramp)"></rect>
+        </mask>
+        <filter id="orb-spark" x="-260%" y="-260%" width="620%" height="620%"><feGaussianBlur stdDeviation="1.7"></feGaussianBlur></filter>
+        <filter id="orb-bloom-md" x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="22"></feGaussianBlur></filter>
+        <filter id="orb-bloom-sm" x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="5"></feGaussianBlur></filter>
+      </defs>
+
+      <g style="transform-origin: 800px 450px; transform: rotate(6.5deg) scale(1.02);">
+        <path d="M -220 -10 C 340 250, 760 470, 1180 520 C 1500 558, 1718 442, 1680 248" fill="none" stroke="url(#orb-arc)" stroke-width="3.4" stroke-linecap="round" opacity="0.95" mask="url(#orb-mask-0)"></path>
+        <path d="M -220 -10 C 340 250, 760 470, 1180 520 C 1500 558, 1718 442, 1680 248" fill="none" stroke="url(#orb-arc)" stroke-width="9" stroke-linecap="round" opacity="0.62" mask="url(#orb-mask-1)" filter="url(#orb-bloom-sm)"></path>
+        <path d="M -220 -10 C 340 250, 760 470, 1180 520 C 1500 558, 1718 442, 1680 248" fill="none" stroke="url(#orb-arc)" stroke-width="24" stroke-linecap="round" opacity="0.5" mask="url(#orb-mask-2)" filter="url(#orb-bloom-sm)"></path>
+        <path d="M -220 -10 C 340 250, 760 470, 1180 520 C 1500 558, 1718 442, 1680 248" fill="none" stroke="url(#orb-arc)" stroke-width="52" stroke-linecap="round" opacity="0.4" mask="url(#orb-mask-3)" filter="url(#orb-bloom-sm)"></path>
+        <path d="M -220 -10 C 340 250, 760 470, 1180 520 C 1500 558, 1718 442, 1680 248" fill="none" stroke="url(#orb-arc)" stroke-width="104" stroke-linecap="round" opacity="0.34" mask="url(#orb-mask-4)" filter="url(#orb-bloom-md)"></path>
+        <path d="M -220 -10 C 340 250, 760 470, 1180 520 C 1500 558, 1718 442, 1680 248" fill="none" stroke="url(#orb-arc)" stroke-width="178" stroke-linecap="round" opacity="0.42" mask="url(#orb-mask-5)" filter="url(#orb-bloom-md)"></path>
+        <path d="M -220 -10 C 340 250, 760 470, 1180 520 C 1500 558, 1718 442, 1680 248" fill="none" stroke="url(#orb-arc)" stroke-width="1" opacity="0.132" transform="translate(0 -24.0)" mask="url(#orb-mask-1)"></path>
+        <path d="M -220 -10 C 340 250, 760 470, 1180 520 C 1500 558, 1718 442, 1680 248" fill="none" stroke="url(#orb-arc)" stroke-width="1.6" opacity="0.199" transform="translate(0 -14.4)" mask="url(#orb-mask-1)"></path>
+        <path d="M -220 -10 C 340 250, 760 470, 1180 520 C 1500 558, 1718 442, 1680 248" fill="none" stroke="url(#orb-arc)" stroke-width="1.6" opacity="0.250" transform="translate(0 -7.2)" mask="url(#orb-mask-1)"></path>
+        <path d="M -220 -10 C 340 250, 760 470, 1180 520 C 1500 558, 1718 442, 1680 248" fill="none" stroke="url(#orb-arc)" stroke-width="1.6" opacity="0.250" transform="translate(0 7.2)" mask="url(#orb-mask-1)"></path>
+        <path d="M -220 -10 C 340 250, 760 470, 1180 520 C 1500 558, 1718 442, 1680 248" fill="none" stroke="url(#orb-arc)" stroke-width="1.6" opacity="0.199" transform="translate(0 14.4)" mask="url(#orb-mask-1)"></path>
+        <path d="M -220 -10 C 340 250, 760 470, 1180 520 C 1500 558, 1718 442, 1680 248" fill="none" stroke="url(#orb-arc)" stroke-width="1" opacity="0.132" transform="translate(0 24.0)" mask="url(#orb-mask-1)"></path>
+        <path d="M 1680 248 C 1646 106, 1500 28, 1310 -52" fill="none" stroke="url(#orb-arc)" stroke-width="96" stroke-linecap="round" opacity="0.3" mask="url(#orb-fade)" filter="url(#orb-bloom-md)"></path>
+        <path d="M 1680 248 C 1646 106, 1500 28, 1310 -52" fill="none" stroke="url(#orb-arc)" stroke-width="46" stroke-linecap="round" opacity="0.34" mask="url(#orb-fade)" filter="url(#orb-bloom-md)"></path>
+        <path d="M 1680 248 C 1646 106, 1500 28, 1310 -52" fill="none" stroke="url(#orb-arc)" stroke-width="20" stroke-linecap="round" opacity="0.42" mask="url(#orb-fade)" filter="url(#orb-bloom-sm)"></path>
+        <path d="M 1680 248 C 1646 106, 1500 28, 1310 -52" fill="none" stroke="url(#orb-arc)" stroke-width="7" stroke-linecap="round" opacity="0.5" mask="url(#orb-fade)" filter="url(#orb-bloom-sm)"></path>
+        <path d="M 1680 248 C 1646 106, 1500 28, 1310 -52" fill="none" stroke="url(#orb-arc)" stroke-width="2.4" stroke-linecap="round" opacity="0.55" mask="url(#orb-fade)"></path>
+        <path d="M -220 -10 C 340 250, 760 470, 1180 520 C 1500 558, 1718 442, 1680 248" fill="none" stroke="url(#orb-arc)" stroke-width="9" stroke-linecap="round" stroke-dasharray="460 340" opacity="0.55" transform="translate(0 -6)" filter="url(#orb-bloom-sm)" style="animation: flowRun 1.3s linear infinite; animation-delay: -0.6s;"></path>
+        <path d="M -220 -10 C 340 250, 760 470, 1180 520 C 1500 558, 1718 442, 1680 248" fill="none" stroke="url(#orb-arc)" stroke-width="5" stroke-linecap="round" stroke-dasharray="220 380" opacity="0.7" transform="translate(0 4)" filter="url(#orb-bloom-sm)" style="animation: flowRun 0.95s linear infinite; animation-delay: -0.3s;"></path>
+        <path d="M -220 -10 C 340 250, 760 470, 1180 520 C 1500 558, 1718 442, 1680 248" fill="none" stroke="url(#orb-arc)" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="120 280" opacity="0.78" transform="translate(0 -12)" filter="url(#orb-bloom-sm)" style="animation: flowRun 0.7s linear infinite; animation-delay: -0.5s;"></path>
+        <path d="M -220 -10 C 340 250, 760 470, 1180 520 C 1500 558, 1718 442, 1680 248" fill="none" stroke="url(#orb-arc)" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="60 340" opacity="0.85" transform="translate(0 10)" filter="url(#orb-bloom-sm)" style="animation: flowRun 0.55s linear infinite; animation-delay: -0.15s;"></path>
+        <path d="M -220 -10 C 340 250, 760 470, 1180 520 C 1500 558, 1718 442, 1680 248" fill="none" stroke="url(#orb-arc)" stroke-width="20" stroke-linecap="round" stroke-dasharray="900 1500" opacity="0.45" transform="translate(0 0)" filter="url(#orb-bloom-md)" style="animation: flowRun 2s linear infinite; animation-delay: -0s;"></path>
+        <circle cx="220" cy="190" r="1.1" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 9s ease-in-out infinite; animation-delay: -0.2s;"></circle>
+        <circle cx="430" cy="292" r="1.2" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 8.5s ease-in-out infinite; animation-delay: -3.4s;"></circle>
+        <circle cx="590" cy="356" r="1.4" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 7s ease-in-out infinite; animation-delay: -1.1s;"></circle>
+        <circle cx="700" cy="402" r="1.2" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 7.5s ease-in-out infinite; animation-delay: -4.8s;"></circle>
+        <circle cx="820" cy="436" r="1.5" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 6.5s ease-in-out infinite; animation-delay: -2.2s;"></circle>
+        <circle cx="905" cy="470" r="1.7" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 5s ease-in-out infinite; animation-delay: -0.6s;"></circle>
+        <circle cx="960" cy="452" r="1.4" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 5.5s ease-in-out infinite; animation-delay: -3.1s;"></circle>
+        <circle cx="1030" cy="496" r="1.9" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 4.6s ease-in-out infinite; animation-delay: -1.7s;"></circle>
+        <circle cx="1090" cy="478" r="1.5" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 5.2s ease-in-out infinite; animation-delay: -4.2s;"></circle>
+        <circle cx="1150" cy="512" r="2.1" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 4.2s ease-in-out infinite; animation-delay: -0.9s;"></circle>
+        <circle cx="1215" cy="498" r="1.6" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 4.8s ease-in-out infinite; animation-delay: -2.6s;"></circle>
+        <circle cx="1370" cy="528" r="2.3" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 3.8s ease-in-out infinite; animation-delay: -1.4s;"></circle>
+        <circle cx="1430" cy="506" r="1.8" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 4.4s ease-in-out infinite; animation-delay: -3.7s;"></circle>
+        <circle cx="1485" cy="534" r="2" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 3.6s ease-in-out infinite; animation-delay: -0.3s;"></circle>
+        <circle cx="1540" cy="512" r="2.4" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 3.4s ease-in-out infinite; animation-delay: -2.9s;"></circle>
+        <circle cx="1580" cy="476" r="1.9" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 4s ease-in-out infinite; animation-delay: -1.9s;"></circle>
+        <circle cx="1620" cy="440" r="2.2" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 3.2s ease-in-out infinite; animation-delay: -4.5s;"></circle>
+        <circle cx="1648" cy="392" r="1.7" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 3.9s ease-in-out infinite; animation-delay: -2.4s;"></circle>
+        <circle cx="1666" cy="336" r="2" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 3.5s ease-in-out infinite; animation-delay: -1.2s;"></circle>
+        <circle cx="1674" cy="286" r="1.5" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 4.3s ease-in-out infinite; animation-delay: -3.9s;"></circle>
+        <circle cx="1660" cy="168" r="1.4" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 4.7s ease-in-out infinite; animation-delay: -2.1s;"></circle>
+        <circle cx="1600" cy="96" r="1.2" fill="#d9b8ff" filter="url(#orb-spark)" style="animation: sparkFade 5.4s ease-in-out infinite; animation-delay: -4.1s;"></circle>
+      </g>
+    </svg>

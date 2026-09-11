@@ -1,0 +1,244 @@
+---
+import { Image } from "astro:assets";
+import mauricioPhoto from "../assets/mauricio-diaz.png";
+import felipePhoto from "../assets/felipe-segovia.png";
+import logoMark from "../assets/logo-mark.png";
+---
+
+<section id="nosotros" class="team">
+	<div class="container team__wrap">
+		<div class="team__intro">
+			<div class="team__intro-head">
+				<span class="eyebrow">Nosotros</span>
+				<h2 class="section-heading">
+					<span class="light">Dos personas, </span>
+					<span class="bold italic">no una agencia</span>
+				</h2>
+			</div>
+			<p class="team__intro-text">
+				<em>Hablas directo con quien diseña y con quien programa.</em>
+				Sin capas intermedias y sin traducciones perdidas en el camino.
+			</p>
+		</div>
+
+		<div class="team__grid">
+			<article class="glass-card team-card">
+				<div class="team-card__body">
+					<span
+						class="team-card__icon team-card__icon--lime"
+						style={`--logo-mark: url(${logoMark.src})`}
+						aria-hidden="true"
+					></span>
+					<div class="team-card__meta">
+						<h3 class="team-card__name">
+							<span class="light">Mauricio </span>
+							<span class="bold">Díaz</span>
+						</h3>
+						<span class="team-card__role team-card__role--lime">Product designer</span>
+					</div>
+					<p class="team-card__bio">
+						Identidad, dirección de arte y la interfaz: cómo se ve el negocio y cómo se usa. De la idea al prototipo
+						navegable.
+					</p>
+				</div>
+				<Image
+					class="team-card__photo"
+					src={mauricioPhoto}
+					alt="Mauricio Díaz, diseñador"
+					width={382}
+					height={616}
+					loading="lazy"
+					decoding="async"
+				/>
+			</article>
+
+			<article class="glass-card team-card">
+				<div class="team-card__body">
+					<span
+						class="team-card__icon team-card__icon--violet"
+						style={`--logo-mark: url(${logoMark.src})`}
+						aria-hidden="true"
+					></span>
+					<div class="team-card__meta">
+						<h3 class="team-card__name">
+							<span class="light">Felipe </span>
+							<span class="bold">Segovia</span>
+						</h3>
+						<span class="team-card__role team-card__role--lilac">Software engineer</span>
+					</div>
+					<p class="team-card__bio">
+						Arquitectura, desarrollo e integraciones: la lógica del negocio convertida en un sistema que se mantiene
+						solo.
+					</p>
+				</div>
+				<Image
+					class="team-card__photo"
+					src={felipePhoto}
+					alt="Felipe Segovia, ingeniero en computación"
+					width={380}
+					height={532}
+					loading="lazy"
+					decoding="async"
+				/>
+			</article>
+		</div>
+	</div>
+</section>
+
+<style>
+	.team {
+		border-bottom: 1px solid var(--color-border-soft);
+	}
+
+	.team__wrap {
+		padding-top: 96px;
+		padding-bottom: 96px;
+		display: flex;
+		flex-direction: column;
+		gap: 56px;
+	}
+
+	.team__intro {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		gap: 56px;
+		align-items: end;
+		border-bottom: 1px solid var(--color-border);
+		padding-bottom: 28px;
+	}
+
+	.team__intro-head {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.team__intro-text {
+		margin: 0;
+		font-size: 15.5px;
+		line-height: 1.65;
+		color: var(--color-muted-soft);
+		text-wrap: pretty;
+	}
+
+	.team__intro-text em {
+		font-style: italic;
+		font-weight: 500;
+		color: #ffffff;
+		display: block;
+		margin-bottom: 0.35em;
+	}
+
+	.team__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+		gap: 28px;
+	}
+
+	.team-card {
+		position: relative;
+		overflow: hidden;
+		padding: 30px 190px 30px 30px;
+		min-height: 280px;
+	}
+
+	.team-card__body {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		min-width: 0;
+		max-width: 320px;
+	}
+
+	.team-card__icon {
+		width: 68px;
+		height: 47px;
+		-webkit-mask-image: var(--logo-mark);
+		mask-image: var(--logo-mark);
+		-webkit-mask-size: 100% 100%;
+		mask-size: 100% 100%;
+		-webkit-mask-repeat: no-repeat;
+		mask-repeat: no-repeat;
+	}
+
+	.team-card__icon--lime {
+		background: var(--color-lime);
+	}
+
+	.team-card__icon--violet {
+		background: var(--color-violet);
+	}
+
+	.team-card__name {
+		font-family: var(--font-display);
+		font-size: 24px;
+		margin: 0;
+		letter-spacing: -0.02em;
+		font-variation-settings: "wdth" 118;
+		text-wrap: balance;
+	}
+
+	.team-card__name .light {
+		font-weight: 200;
+	}
+
+	.team-card__name .bold {
+		font-weight: 800;
+	}
+
+	.team-card__role {
+		font-size: 11.5px;
+		font-weight: 500;
+		letter-spacing: 0.14em;
+		line-height: 1.4;
+		text-transform: uppercase;
+	}
+
+	.team-card__role--lime {
+		color: var(--color-lime);
+	}
+
+	.team-card__role--lilac {
+		color: var(--color-lilac);
+	}
+
+	.team-card__bio {
+		margin: 0;
+		font-size: 14.5px;
+		line-height: 1.6;
+		color: rgba(255, 255, 255, 0.7);
+		text-wrap: pretty;
+	}
+
+	.team-card__photo {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 190px;
+		height: 100%;
+		object-fit: cover;
+		object-position: center top;
+	}
+
+	@media (max-width: 640px) {
+		.team__intro {
+			grid-template-columns: 1fr;
+			gap: 24px;
+		}
+
+		.team-card {
+			padding: 24px;
+			padding-bottom: 0;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.team-card__photo {
+			position: relative;
+			width: 100%;
+			height: 320px;
+			margin-top: 20px;
+			border-radius: 8px 8px 0 0;
+		}
+	}
+</style>

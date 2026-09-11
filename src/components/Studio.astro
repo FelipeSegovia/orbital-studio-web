@@ -1,0 +1,91 @@
+---
+---
+
+<section id="estudio" class="studio">
+	<div class="container studio__grid">
+		<div class="studio__head">
+			<span class="eyebrow">El estudio</span>
+			<h2 class="section-heading studio__title">
+				<span class="light">Por qué </span>
+				<span class="bold">existimos</span>
+			</h2>
+		</div>
+		<div class="studio__block">
+			<span class="studio__label">Misión</span>
+			<p>
+				En Orbital Studio ayudamos a emprendedores y pequeñas empresas a fortalecer su presencia digital, combinando
+				diseño gráfico, desarrollo de software y estrategias de marketing en soluciones accesibles y de calidad.
+			</p>
+		</div>
+		<div class="studio__block">
+			<span class="studio__label">Visión</span>
+			<p>
+				Que ninguna buena idea de negocio se quede atrás por falta de presencia digital — ser el puente entre
+				emprendedores con potencial y las herramientas digitales que necesitan para crecer.
+			</p>
+		</div>
+	</div>
+</section>
+
+<style>
+	.studio {
+		border-bottom: 1px solid var(--color-border-soft);
+		background: radial-gradient(60% 80% at 50% 0%, rgba(125, 57, 235, 0.08), transparent 70%);
+	}
+
+	.studio__grid {
+		padding-top: 96px;
+		padding-bottom: 96px;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 28px;
+	}
+
+	.studio__head {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+		padding-right: 24px;
+	}
+
+	.studio__title {
+		font-size: clamp(28px, 3.2vw, 40px);
+		line-height: 1.06;
+	}
+
+	.studio__block {
+		border-left: 1px solid rgba(255, 255, 255, 0.14);
+		padding-left: 32px;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.studio__label {
+		font-size: 12px;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: rgba(255, 255, 255, 0.5);
+	}
+
+	.studio__block p {
+		margin: 0;
+		font-size: 16.5px;
+		line-height: 1.65;
+		color: rgba(255, 255, 255, 0.82);
+		text-wrap: pretty;
+	}
+
+	@media (max-width: 640px) {
+		.studio__block {
+			border-left: none;
+			padding-left: 0;
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+			padding-top: 24px;
+		}
+
+		.studio__head {
+			padding-right: 0;
+		}
+	}
+</style>

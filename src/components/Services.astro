@@ -1,0 +1,227 @@
+---
+const designItems = [
+	{
+		label: "Gráfico",
+		accent: "lime",
+		text: "Diseño digital e impreso, editorial, mailings e identidad visual",
+	},
+	{
+		label: "UX · UI",
+		accent: "lilac",
+		text: "Research, flujos de usuario, wireframes y prototipado.",
+	},
+	{
+		label: "Multimedia",
+		accent: "lime",
+		text: "Animación de logotipos y material para content creator.",
+	},
+	{
+		label: "Ilustración digital",
+		accent: "lilac",
+		text: "Piezas originales para marca, producto y redes.",
+	},
+	{
+		label: "Industrial",
+		accent: "lime",
+		text: "Planificación, creación de conceptos, manufactura e impresion 3D",
+	},
+];
+
+const devItems = [
+	{
+		label: "Sitios web",
+		accent: "lilac",
+		text: "Implementación de sitios web",
+	},
+	{
+		label: "Autoadministrables",
+		accent: "lime",
+		text: "Sitios web autoadministrables",
+	},
+	{
+		label: "Pagos",
+		accent: "lilac",
+		text: "Integración pasarelas de pago (Webpay, Mercado Pago, Paypal)",
+	},
+	{
+		label: "Integraciones",
+		accent: "lime",
+		text: "Integraciones entre sistemas",
+	},
+	{
+		label: "Aplicaciones móviles",
+		accent: "lilac",
+		text: "Desarrollos de aplicaciones móviles",
+	},
+];
+---
+
+<section id="servicios" class="services">
+	<div class="container services__wrap">
+		<div class="services__intro">
+			<div class="services__intro-head">
+				<span class="eyebrow">Servicios</span>
+				<h2 class="section-heading">
+					<span class="light">Dos frentes, </span>
+					<span class="bold">un mismo sistema</span>
+				</h2>
+			</div>
+			<p class="services__intro-text">
+				El diseño define cómo se entiende tu negocio; el desarrollo lo pone a funcionar. Trabajamos los dos en la
+				misma conversación, no en etapas separadas.
+			</p>
+		</div>
+
+		<div class="services__grid">
+			<article class="glass-card service-card">
+				<div class="service-card__head">
+					<h3 class="service-card__title">Diseño</h3>
+					<span class="service-card__index">01</span>
+				</div>
+				<div class="service-card__list">
+					{
+						designItems.map((item) => (
+							<div class="service-card__item">
+								<span class:list={["service-card__label", item.accent === "lilac" && "service-card__label--lilac"]}>
+									{item.label}
+								</span>
+								<p>{item.text}</p>
+							</div>
+						))
+					}
+				</div>
+			</article>
+
+			<article class="glass-card service-card">
+				<div class="service-card__head">
+					<h3 class="service-card__title">Desarrollo</h3>
+					<span class="service-card__index">02</span>
+				</div>
+				<div class="service-card__list">
+					{
+						devItems.map((item) => (
+							<div class="service-card__item">
+								<span class:list={["service-card__label", item.accent === "lilac" && "service-card__label--lilac"]}>
+									{item.label}
+								</span>
+								<p>{item.text}</p>
+							</div>
+						))
+					}
+				</div>
+			</article>
+		</div>
+	</div>
+</section>
+
+<style>
+	.services {
+		border-bottom: 1px solid var(--color-border-soft);
+	}
+
+	.services__wrap {
+		padding-top: 96px;
+		padding-bottom: 96px;
+		display: flex;
+		flex-direction: column;
+		gap: 56px;
+	}
+
+	.services__intro {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		gap: 56px;
+		align-items: end;
+		border-bottom: 1px solid var(--color-border);
+		padding-bottom: 28px;
+	}
+
+	.services__intro-head {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.services__intro-text {
+		margin: 0;
+		font-size: 15.5px;
+		line-height: 1.65;
+		color: var(--color-muted-soft);
+		text-wrap: pretty;
+	}
+
+	.services__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		gap: 28px;
+	}
+
+	.service-card {
+		padding: 36px;
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+	}
+
+	.service-card__head {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 16px;
+	}
+
+	.service-card__title {
+		font-family: var(--font-display);
+		font-size: 26px;
+		margin: 0;
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		font-variation-settings: "wdth" 118;
+	}
+
+	.service-card__index {
+		font-size: 11px;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: rgba(255, 255, 255, 0.45);
+	}
+
+	.service-card__list {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+	}
+
+	.service-card__item {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		border-top: 1px solid rgba(255, 255, 255, 0.09);
+		padding-top: 18px;
+	}
+
+	.service-card__label {
+		font-size: 12px;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--color-lime);
+	}
+
+	.service-card__label--lilac {
+		color: var(--color-lilac);
+	}
+
+	.service-card__item p {
+		margin: 0;
+		font-size: 15px;
+		line-height: 1.6;
+		color: rgba(255, 255, 255, 0.78);
+	}
+
+	@media (max-width: 768px) {
+		.services__intro {
+			grid-template-columns: 1fr;
+			gap: 24px;
+		}
+	}
+</style>

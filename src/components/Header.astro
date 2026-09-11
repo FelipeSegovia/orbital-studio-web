@@ -1,0 +1,88 @@
+---
+import Logo from "./Logo.astro";
+---
+
+<header class="header">
+	<nav class="header__nav container" aria-label="Principal">
+		<Logo variant="header" />
+		<div class="header__links">
+			<a class="header__link" href="#servicios">Servicios</a>
+			<a class="header__link" href="#estudio">Estudio</a>
+			<a class="header__link" href="#nosotros">Nosotros</a>
+			<a class="header__cta" href="#contacto">Hablemos</a>
+		</div>
+	</nav>
+</header>
+
+<style>
+	.header {
+		position: sticky;
+		top: 0;
+		z-index: 20;
+		backdrop-filter: blur(14px);
+		background: rgba(0, 0, 0, 0.86);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.header__nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 24px;
+		padding-top: 18px;
+		padding-bottom: 18px;
+	}
+
+	.header__links {
+		display: flex;
+		align-items: center;
+		gap: 32px;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+	}
+
+	.header__link {
+		font-size: 13.5px;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: rgba(255, 255, 255, 0.72);
+		transition: color 0.2s ease;
+	}
+
+	.header__link:hover {
+		color: #ffffff;
+	}
+
+	.header__cta {
+		font-size: 13px;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: #000000;
+		background: var(--color-lime);
+		border: 1px solid rgba(255, 255, 255, 0.28);
+		border-radius: 10px;
+		padding: 11px 20px;
+		font-weight: 600;
+		box-shadow:
+			inset 0 1px 0 rgba(255, 255, 255, 0.45),
+			0 10px 26px rgba(198, 255, 51, 0.22);
+		transition: filter 0.2s ease;
+	}
+
+	.header__cta:hover {
+		filter: brightness(1.12);
+		color: #000000;
+	}
+
+	@media (max-width: 640px) {
+		.header__nav {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.header__links {
+			gap: 16px 20px;
+			width: 100%;
+		}
+	}
+</style>

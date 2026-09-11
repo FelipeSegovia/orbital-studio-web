@@ -1,0 +1,92 @@
+---
+import logoMark from "../assets/logo-mark.png";
+import logoWordmark from "../assets/logo-wordmark.png";
+
+interface Props {
+	variant?: "header" | "footer";
+}
+
+const { variant = "header" } = Astro.props;
+const isHeader = variant === "header";
+---
+
+<a href="#inicio" class:list={["logo", { "logo--footer": !isHeader }]} aria-label="Orbital Studio — inicio">
+	<span
+		class="logo__mark"
+		style={`--logo-mark: url(${logoMark.src})`}
+		aria-hidden="true"
+	></span>
+	<span
+		class="logo__wordmark"
+		style={`--logo-wordmark: url(${logoWordmark.src})`}
+		aria-hidden="true"
+	></span>
+</a>
+
+<style>
+	.logo {
+		position: relative;
+		display: block;
+		flex: none;
+		text-decoration: none;
+	}
+
+	.logo--footer {
+		width: 190px;
+		height: 48px;
+	}
+
+	.logo:not(.logo--footer) {
+		width: 133px;
+		height: 34px;
+	}
+
+	.logo__mark,
+	.logo__wordmark {
+		position: absolute;
+		-webkit-mask-size: 100% 100%;
+		mask-size: 100% 100%;
+		-webkit-mask-repeat: no-repeat;
+		mask-repeat: no-repeat;
+	}
+
+	.logo:not(.logo--footer) .logo__mark {
+		left: 0;
+		top: 0;
+		width: 49px;
+		height: 34px;
+		background: linear-gradient(128deg, #c6ff33 0%, #a97bf5 54%, #7d39eb 100%);
+		-webkit-mask-image: var(--logo-mark);
+		mask-image: var(--logo-mark);
+	}
+
+	.logo:not(.logo--footer) .logo__wordmark {
+		left: 53px;
+		top: 11px;
+		width: 80px;
+		height: 19px;
+		background: #ffffff;
+		-webkit-mask-image: var(--logo-wordmark);
+		mask-image: var(--logo-wordmark);
+	}
+
+	.logo--footer .logo__mark {
+		left: 0;
+		top: 0;
+		width: 70px;
+		height: 48px;
+		background: #ffffff;
+		-webkit-mask-image: var(--logo-mark);
+		mask-image: var(--logo-mark);
+	}
+
+	.logo--footer .logo__wordmark {
+		left: 76px;
+		top: 15px;
+		width: 114px;
+		height: 27px;
+		background: #ffffff;
+		-webkit-mask-image: var(--logo-wordmark);
+		mask-image: var(--logo-wordmark);
+	}
+</style>
