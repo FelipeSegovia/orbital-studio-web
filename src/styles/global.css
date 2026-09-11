@@ -6,6 +6,7 @@
 	--color-lilac: #a97bf5;
 	--color-muted: rgba(255, 255, 255, 0.72);
 	--color-muted-soft: rgba(255, 255, 255, 0.66);
+	--color-label: rgba(255, 255, 255, 0.62);
 	--color-border: rgba(255, 255, 255, 0.1);
 	--color-border-soft: rgba(255, 255, 255, 0.08);
 	--max-width: 1180px;
@@ -28,6 +29,7 @@
 
 html {
 	scroll-behavior: smooth;
+	color-scheme: dark;
 }
 
 body {
@@ -48,6 +50,14 @@ a:hover {
 	color: var(--color-lilac);
 }
 
+a:focus-visible,
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+button:focus-visible {
+	outline: 2px solid var(--color-lime);
+	outline-offset: 2px;
+}
+
 ::selection {
 	background: rgba(125, 57, 235, 0.5);
 }
@@ -59,10 +69,28 @@ button {
 }
 
 input:focus-visible,
-textarea:focus-visible,
-button:focus-visible {
+textarea:focus-visible {
 	outline: 2px solid var(--color-lime);
 	outline-offset: 2px;
+}
+
+.skip-link {
+	position: absolute;
+	left: 16px;
+	top: 12px;
+	z-index: 100;
+	padding: 10px 16px;
+	background: var(--color-lime);
+	color: #000000;
+	font-size: 14px;
+	font-weight: 600;
+	border-radius: 8px;
+	transform: translateY(-160%);
+}
+
+.skip-link:focus {
+	transform: translateY(0);
+	color: #000000;
 }
 
 @keyframes arcDrift {
@@ -84,13 +112,37 @@ button:focus-visible {
 	}
 }
 
+@keyframes flowRun {
+	to {
+		stroke-dashoffset: -2400;
+	}
+}
+
+@keyframes sparkFade {
+	0% {
+		opacity: 0;
+	}
+	10% {
+		opacity: 0.9;
+	}
+	34% {
+		opacity: 0.12;
+	}
+	52%,
+	100% {
+		opacity: 0;
+	}
+}
+
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;
 	}
 
 	.hero__glow,
-	.hero__arc-group {
+	.hero__arc svg > g,
+	.hero__arc svg path,
+	.hero__arc svg circle {
 		animation: none !important;
 	}
 }
@@ -123,7 +175,10 @@ button:focus-visible {
 }
 
 .btn-primary {
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 44px;
 	font-size: 13.5px;
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
@@ -145,7 +200,10 @@ button:focus-visible {
 }
 
 .btn-secondary {
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 44px;
 	font-size: 13.5px;
 	letter-spacing: 0.12em;
 	text-transform: uppercase;

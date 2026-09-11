@@ -9,8 +9,8 @@ import Logo from "./Logo.astro";
 			<a class="header__link" href="#servicios">Servicios</a>
 			<a class="header__link" href="#estudio">Estudio</a>
 			<a class="header__link" href="#nosotros">Nosotros</a>
-			<a class="header__cta" href="#contacto">Hablemos</a>
 		</div>
+		<a class="header__cta" href="#contacto">Hablemos</a>
 	</nav>
 </header>
 
@@ -25,23 +25,27 @@ import Logo from "./Logo.astro";
 	}
 
 	.header__nav {
-		display: flex;
+		display: grid;
+		grid-template-columns: auto 1fr auto;
 		align-items: center;
-		justify-content: space-between;
-		gap: 24px;
-		padding-top: 18px;
-		padding-bottom: 18px;
+		gap: 12px 24px;
+		padding-top: 10px;
+		padding-bottom: 10px;
 	}
 
 	.header__links {
 		display: flex;
 		align-items: center;
-		gap: 32px;
-		flex-wrap: wrap;
 		justify-content: flex-end;
+		gap: 8px 12px;
+		flex-wrap: wrap;
 	}
 
 	.header__link {
+		display: inline-flex;
+		align-items: center;
+		min-height: 44px;
+		padding: 0 10px;
 		font-size: 13.5px;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
@@ -54,6 +58,10 @@ import Logo from "./Logo.astro";
 	}
 
 	.header__cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 44px;
 		font-size: 13px;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
@@ -76,13 +84,13 @@ import Logo from "./Logo.astro";
 
 	@media (max-width: 640px) {
 		.header__nav {
-			flex-direction: column;
-			align-items: flex-start;
+			grid-template-columns: 1fr auto;
 		}
 
 		.header__links {
-			gap: 16px 20px;
-			width: 100%;
+			grid-column: 1 / -1;
+			justify-content: flex-start;
+			gap: 0 4px;
 		}
 	}
 </style>

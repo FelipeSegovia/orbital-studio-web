@@ -95,6 +95,15 @@ import arcSvg from "../assets/orbital-arc.svg?raw";
 		animation: arcDrift 14s ease-in-out infinite alternate;
 	}
 
+	@media (prefers-reduced-motion: reduce) {
+		.hero__glow,
+		.hero__arc :global(svg > g),
+		.hero__arc :global(svg path),
+		.hero__arc :global(svg circle) {
+			animation: none;
+		}
+	}
+
 	.hero__inner {
 		position: relative;
 		width: 100%;
