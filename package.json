@@ -12,7 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/vercel": "^11.0.10",
     "astro": "^7.3.2",
+    "resend": "^6.28.0",
     "sharp": "^0.35.4"
   },
   "packageManager": "pnpm@10.7.1",

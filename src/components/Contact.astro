@@ -1,5 +1,5 @@
 ---
-const email = "hola@orbitalstudio.cl";
+const email = "contacto@orbitalstudio.cl";
 ---
 
 <section id="contacto" class="contact">
@@ -26,81 +26,90 @@ const email = "hola@orbitalstudio.cl";
 			</dl>
 		</div>
 
-		<form
-			class="contact__form glass-card"
-			id="contact-form"
-			action={`mailto:${email}`}
-			method="post"
-			enctype="text/plain"
-		>
+		<form class="contact__form glass-card" id="contact-form" novalidate>
 			<div class="contact__fields-row">
 				<label class="contact__field">
 					<span>Nombre</span>
 					<input
 						type="text"
-						name="nombre"
+						name="name"
 						placeholder="Tu nombre"
 						required
 						autocomplete="name"
-						aria-describedby="error-nombre"
+						aria-describedby="error-name"
 					/>
-					<span class="contact__error" id="error-nombre" role="alert"></span>
+					<span class="contact__error" id="error-name" role="alert"></span>
 				</label>
 				<label class="contact__field">
 					<span>Correo</span>
 					<input
 						type="email"
-						name="correo"
+						name="email"
 						placeholder="tu@correo.cl"
 						required
 						autocomplete="email"
-						aria-describedby="error-correo"
+						aria-describedby="error-email"
 					/>
-					<span class="contact__error" id="error-correo" role="alert"></span>
+					<span class="contact__error" id="error-email" role="alert"></span>
 				</label>
 			</div>
 			<label class="contact__field">
 				<span>Qué necesitas</span>
 				<textarea
-					name="mensaje"
+					name="message"
 					rows="5"
 					placeholder="Cuéntanos en qué está tu negocio hoy y qué te gustaría resolver."
 					required
-					aria-describedby="error-mensaje"></textarea>
-				<span class="contact__error" id="error-mensaje" role="alert"></span>
+					aria-describedby="error-message"></textarea>
+				<span class="contact__error" id="error-message" role="alert"></span>
 			</label>
-			<button class="contact__submit" type="submit">Abrir correo</button>
-			<p class="contact__note" id="form-note">
-				Se abrirá tu cliente de correo con el mensaje listo para {email}.
+			<button class="contact__submit" type="submit" id="contact-submit">Enviar</button>
+			<p class="contact__note" id="form-note" role="status" aria-live="polite">
+				Te respondemos a la brevedad. También puedes escribirnos a {email}.
 			</p>
 		</form>
 	</div>
 </section>
 
-<script define:vars={{ email }}>
+<script>
+	import { actions, isInputError } from "astro:actions";
+
 	const form = document.getElementById("contact-form");
 	const note = document.getElementById("form-note");
+	const submit = document.getElementById("contact-submit");
 
-	if (form instanceof HTMLFormElement) {
+	if (form instanceof HTMLFormElement && submit instanceof HTMLButtonElement) {
 		const fields = [
 			{
-				name: "nombre",
+				name: "name",
 				empty: "Escribe tu nombre.",
 			},
 			{
-				name: "correo",
+				name: "email",
 				empty: "Escribe tu correo.",
 				invalid: "Revisa el formato del correo.",
 			},
 			{
-				name: "mensaje",
+				name: "message",
 				empty: "Cuéntanos qué necesitas.",
 			},
 		];
 
+		const defaultNote =
+			"Te respondemos a la brevedad. También puedes escribirnos a contacto@orbitalstudio.cl.";
+
 		function setFieldError(input, errorEl, message) {
 			input.setAttribute("aria-invalid", message ? "true" : "false");
 			if (errorEl) errorEl.textContent = message;
+		}
+
+		function clearErrors() {
+			for (const field of fields) {
+				const input = form.elements.namedItem(field.name);
+				const errorEl = document.getElementById(`error-${field.name}`);
+				if (!(input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement)) continue;
+				setFieldError(input, errorEl, "");
+			}
 		}
 
 		function validate() {
@@ -116,7 +125,7 @@ const email = "hola@orbitalstudio.cl";
 
 				if (!value) {
 					message = field.empty;
-				} else if (field.name === "correo" && !input.checkValidity()) {
+				} else if (field.name === "email" && !input.checkValidity()) {
 					message = field.invalid;
 				}
 
@@ -126,6 +135,23 @@ const email = "hola@orbitalstudio.cl";
 
 			if (firstInvalid) firstInvalid.focus();
 			return !firstInvalid;
+		}
+
+		function applyServerFieldErrors(error) {
+			if (!isInputError(error) || !error.fields) return false;
+
+			let firstInvalid = null;
+			for (const field of fields) {
+				const messages = error.fields[field.name];
+				const input = form.elements.namedItem(field.name);
+				const errorEl = document.getElementById(`error-${field.name}`);
+				if (!(input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement)) continue;
+				const message = Array.isArray(messages) ? (messages[0] ?? "") : "";
+				setFieldError(input, errorEl, message);
+				if (message && !firstInvalid) firstInvalid = input;
+			}
+			if (firstInvalid) firstInvalid.focus();
+			return true;
 		}
 
 		for (const field of fields) {
@@ -140,23 +166,43 @@ const email = "hola@orbitalstudio.cl";
 			});
 		}
 
-		form.addEventListener("submit", (event) => {
+		form.addEventListener("submit", async (event) => {
 			event.preventDefault();
 			if (!validate()) return;
 
-			const data = new FormData(form);
-			const nombre = String(data.get("nombre") ?? "").trim();
-			const correo = String(data.get("correo") ?? "").trim();
-			const mensaje = String(data.get("mensaje") ?? "").trim();
+			clearErrors();
+			submit.disabled = true;
+			submit.textContent = "Enviando…";
+			if (note) note.textContent = "Enviando tu mensaje…";
 
-			const subject = encodeURIComponent(`Consulta desde la web — ${nombre}`);
-			const body = encodeURIComponent(`Nombre: ${nombre}\nCorreo: ${correo}\n\n${mensaje}`);
+			try {
+				const formData = new FormData(form);
+				const { error } = await actions.contact.send(formData);
 
-			window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+				if (error) {
+					if (applyServerFieldErrors(error)) {
+						if (note) note.textContent = defaultNote;
+					} else if (note) {
+						note.textContent =
+							error.message ||
+							"No pudimos enviar el mensaje ahora. Escríbenos a contacto@orbitalstudio.cl.";
+					}
+					return;
+				}
 
-			if (note) {
-				note.textContent =
-					"Se abrió tu cliente de correo. Si no ves nada, escríbenos directo a " + email + ".";
+				form.reset();
+				clearErrors();
+				if (note) {
+					note.textContent = "Listo. Recibimos tu mensaje y te responderemos pronto.";
+				}
+			} catch {
+				if (note) {
+					note.textContent =
+						"No pudimos enviar el mensaje ahora. Escríbenos a contacto@orbitalstudio.cl.";
+				}
+			} finally {
+				submit.disabled = false;
+				submit.textContent = "Enviar";
 			}
 		});
 	}
@@ -327,8 +373,13 @@ const email = "hola@orbitalstudio.cl";
 		transition: filter 0.2s ease;
 	}
 
-	.contact__submit:hover {
+	.contact__submit:hover:not(:disabled) {
 		filter: brightness(1.12);
+	}
+
+	.contact__submit:disabled {
+		opacity: 0.7;
+		cursor: wait;
 	}
 
 	.contact__note {
