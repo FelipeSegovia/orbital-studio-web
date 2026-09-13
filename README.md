@@ -24,9 +24,11 @@ El HTML de la landing se prerenderiza. El envío del formulario corre on-demand 
 Copia `.env.example` a `.env` y completa los valores:
 
 - `RESEND_API_KEY` — clave de API de Resend (nunca `PUBLIC_*`)
-- `CONTACT_TO_EMAIL` — destinatario (p. ej. `contacto@orbitalstudio.cl`); el correo del visitante va en el formulario y se usa como `replyTo`
+- `RESEND_FROM` (opcional) — remitente técnico verificado en Resend; si falta, usa `Orbital Studio <contacto@orbitalstudio.cl>`
 
-En Vercel, define las mismas variables en el proyecto.
+El destinatario (`contacto@orbitalstudio.cl`) se define en [`src/config/site.ts`](src/config/site.ts). El correo del visitante va en el formulario y se usa como `replyTo`.
+
+En Vercel, define al menos `RESEND_API_KEY`.
 
 ## Despliegue
 

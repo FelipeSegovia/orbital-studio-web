@@ -1,5 +1,7 @@
 ---
-const email = "contacto@orbitalstudio.cl";
+import { site } from "../config/site";
+
+const email = site.contactEmail;
 ---
 
 <section id="contacto" class="contact">
@@ -26,7 +28,12 @@ const email = "contacto@orbitalstudio.cl";
 			</dl>
 		</div>
 
-		<form class="contact__form glass-card" id="contact-form" novalidate>
+		<form
+			class="contact__form glass-card"
+			id="contact-form"
+			novalidate
+			data-contact-email={email}
+		>
 			<div class="contact__fields-row">
 				<label class="contact__field">
 					<span>Nombre</span>
@@ -79,6 +86,7 @@ const email = "contacto@orbitalstudio.cl";
 	const submit = document.getElementById("contact-submit");
 
 	if (form instanceof HTMLFormElement && submit instanceof HTMLButtonElement) {
+		const email = form.dataset.contactEmail ?? "contacto@orbitalstudio.cl";
 		const fields = [
 			{
 				name: "name",
@@ -95,8 +103,8 @@ const email = "contacto@orbitalstudio.cl";
 			},
 		];
 
-		const defaultNote =
-			"Te respondemos a la brevedad. También puedes escribirnos a contacto@orbitalstudio.cl.";
+		const defaultNote = `Te respondemos a la brevedad. También puedes escribirnos a ${email}.`;
+		const sendErrorNote = `No pudimos enviar el mensaje ahora. Escríbenos a ${email}.`;
 
 		function setFieldError(input, errorEl, message) {
 			input.setAttribute("aria-invalid", message ? "true" : "false");
@@ -183,9 +191,7 @@ const email = "contacto@orbitalstudio.cl";
 					if (applyServerFieldErrors(error)) {
 						if (note) note.textContent = defaultNote;
 					} else if (note) {
-						note.textContent =
-							error.message ||
-							"No pudimos enviar el mensaje ahora. Escríbenos a contacto@orbitalstudio.cl.";
+						note.textContent = error.message || sendErrorNote;
 					}
 					return;
 				}
@@ -196,10 +202,7 @@ const email = "contacto@orbitalstudio.cl";
 					note.textContent = "Listo. Recibimos tu mensaje y te responderemos pronto.";
 				}
 			} catch {
-				if (note) {
-					note.textContent =
-						"No pudimos enviar el mensaje ahora. Escríbenos a contacto@orbitalstudio.cl.";
-				}
+				if (note) note.textContent = sendErrorNote;
 			} finally {
 				submit.disabled = false;
 				submit.textContent = "Enviar";
