@@ -20,6 +20,11 @@ export const server = {
 				const to = import.meta.env.CONTACT_TO_EMAIL;
 
 				if (!apiKey || !to) {
+					console.error(
+						"[contact.send] Faltan variables de entorno:",
+						!apiKey ? "RESEND_API_KEY" : "",
+						!to ? "CONTACT_TO_EMAIL" : "",
+					);
 					throw new ActionError({
 						code: "INTERNAL_SERVER_ERROR",
 						message:
@@ -28,8 +33,6 @@ export const server = {
 				}
 
 				const resend = new Resend(apiKey);
-				// `to` viene del entorno. `from` debe ser dominio verificado en Resend
-				// (mismo buzón de contacto). Quien escribe es el email del formulario (`replyTo`).
 				const { error } = await resend.emails.send({
 					from: to,
 					to,
@@ -39,6 +42,7 @@ export const server = {
 				});
 
 				if (error) {
+					console.error("[contact.send] Resend:", error.name, error.message);
 					throw new ActionError({
 						code: "INTERNAL_SERVER_ERROR",
 						message:
