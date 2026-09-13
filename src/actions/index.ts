@@ -18,9 +18,8 @@ export const server = {
 			handler: async ({ name, email, message }) => {
 				const apiKey = import.meta.env.RESEND_API_KEY;
 				const to = import.meta.env.CONTACT_TO_EMAIL;
-				const from = import.meta.env.CONTACT_FROM_EMAIL;
 
-				if (!apiKey || !to || !from) {
+				if (!apiKey || !to) {
 					throw new ActionError({
 						code: "INTERNAL_SERVER_ERROR",
 						message:
@@ -29,8 +28,10 @@ export const server = {
 				}
 
 				const resend = new Resend(apiKey);
+				// `to` viene del entorno. `from` debe ser dominio verificado en Resend
+				// (mismo buzón de contacto). Quien escribe es el email del formulario (`replyTo`).
 				const { error } = await resend.emails.send({
-					from,
+					from: to,
 					to,
 					replyTo: email,
 					subject: `Consulta desde la web — ${name}`,
