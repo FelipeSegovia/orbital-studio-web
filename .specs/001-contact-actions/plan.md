@@ -24,7 +24,7 @@ Action → data | ActionError
 
 - `contact.send` con `accept: 'form'`
 - Input Zod: `name` (string, trim, min 1), `email` (email), `message` (string, trim, min 1, max 5000)
-- Handler: `new Resend(import.meta.env.RESEND_API_KEY)`, `from`/`to` desde env, subject `Consulta desde la web — {name}`, reply-to = email del visitante
+- Handler: `new Resend(serverEnv('RESEND_API_KEY'))`, `from` vía `resendFrom()` (`RESEND_FROM` obligatorio), `to`: `site.contactEmail`, subject `Consulta desde la web — {name}`, reply-to = email del visitante
 - Errores: `ActionError` (`BAD_REQUEST` / `INTERNAL_SERVER_ERROR`); sin filtrar la API key
 
 ### Por qué no form action HTML
@@ -34,8 +34,8 @@ Las docs de Astro exigen página on-demand para `action={actions…}` en el `<fo
 ### Variables de entorno
 
 - `RESEND_API_KEY`
-- `CONTACT_TO_EMAIL=contacto@orbitalstudio.cl`
-- `CONTACT_FROM_EMAIL` — dominio verificado en Resend
+- `RESEND_FROM` — solo el email del remitente; dominio verificado en producción (`onboarding@resend.dev` en pruebas)
+- Destinatario: `site.contactEmail` en `src/config/site.ts` (no variable de entorno)
 
 ## Verificación end-to-end
 

@@ -5,6 +5,7 @@ import { Resend } from "resend";
 import { site } from "../config/site";
 import { resendFrom } from "../lib/contact-config";
 import { contactSubject, emailBodies, isValidEmail } from "../lib/contact";
+import { serverEnv } from "../lib/server-env";
 
 export const server = {
 	contact: {
@@ -27,11 +28,11 @@ export const server = {
 					});
 				}
 
-				const apiKey = import.meta.env.RESEND_API_KEY?.trim() ?? "";
+				const apiKey = serverEnv("RESEND_API_KEY");
 				const from = resendFrom();
 
 				if (!apiKey || !from) {
-					console.error("[contact.send] Falta RESEND_API_KEY o remitente (RESEND_FROM / site).");
+					console.error("[contact.send] Falta RESEND_API_KEY o RESEND_FROM válido.");
 					throw new ActionError({
 						code: "INTERNAL_SERVER_ERROR",
 						message: `No pudimos enviar el mensaje ahora. Escríbenos a ${site.contactEmail}.`,
