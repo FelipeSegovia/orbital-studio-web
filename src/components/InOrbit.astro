@@ -1,0 +1,263 @@
+---
+import { Image } from "astro:assets";
+import matriculayaImage from "../assets/matriculaya.png";
+import rondaControlImage from "../assets/ronda-control.png";
+
+const projects = [
+	{
+		name: "MatriculaYa",
+		href: "https://teaser-matricula.netlify.app/",
+		image: matriculayaImage,
+		imageAlt: "Captura del teaser de MatriculaYa",
+		index: "01",
+		accent: "lime" as const,
+		description:
+			"Educadoras y promotoras registran el interés de un apoderado. Dirección ve el embudo: cuántos de esos contactos llegan a matrícula formal.",
+	},
+	{
+		name: "RondaControl",
+		href: "https://ronda-control.netlify.app/",
+		image: rondaControlImage,
+		imageAlt: "Captura del teaser de RondaControl",
+		index: "02",
+		accent: "lilac" as const,
+		description:
+			"El escaneo del QR pegado en el punto y la ubicación del teléfono. Dos señales que no se pueden falsificar por separado.",
+	},
+];
+---
+
+<section id="en-orbita" class="in-orbit">
+	<div class="container in-orbit__wrap">
+		<div class="in-orbit__intro">
+			<div class="in-orbit__intro-head">
+				<span class="eyebrow">En órbita</span>
+				<h2 class="section-heading">
+					<span class="light">Lo que estamos </span>
+					<span class="bold">construyendo</span>
+				</h2>
+			</div>
+			<p class="in-orbit__intro-text">
+				Productos propios, todavía en órbita. Se pueden ver y probar hoy; no son el destino final.
+			</p>
+		</div>
+
+		<div class="in-orbit__grid">
+			{
+				projects.map((project) => (
+					<a
+						class="glass-card in-orbit-card"
+						href={project.href}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<div class="in-orbit-card__media">
+							<Image
+								class="in-orbit-card__image"
+								src={project.image}
+								alt={project.imageAlt}
+								widths={[480, 720, 960]}
+								sizes="(max-width: 768px) 100vw, 560px"
+								loading="lazy"
+								decoding="async"
+							/>
+						</div>
+						<div class="in-orbit-card__body">
+							<div class="in-orbit-card__meta">
+								<span
+									class:list={[
+										"in-orbit-card__status",
+										project.accent === "lilac" && "in-orbit-card__status--lilac",
+									]}
+								>
+									En desarrollo
+								</span>
+								<span class="in-orbit-card__index">{project.index}</span>
+							</div>
+							<h3 class="in-orbit-card__name">{project.name}</h3>
+							<p class="in-orbit-card__description">{project.description}</p>
+							<span class="in-orbit-card__cta">Ver teaser</span>
+						</div>
+						<span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+					</a>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	.in-orbit {
+		border-bottom: 1px solid var(--color-border-soft);
+	}
+
+	.in-orbit__wrap {
+		padding-top: 96px;
+		padding-bottom: 96px;
+		display: flex;
+		flex-direction: column;
+		gap: 56px;
+	}
+
+	.in-orbit__intro {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		gap: 56px;
+		align-items: end;
+		border-bottom: 1px solid var(--color-border);
+		padding-bottom: 28px;
+	}
+
+	.in-orbit__intro-head {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.in-orbit__intro-text {
+		margin: 0;
+		font-size: 15.5px;
+		line-height: 1.65;
+		color: var(--color-muted-soft);
+		text-wrap: pretty;
+	}
+
+	.in-orbit__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+		gap: 28px;
+	}
+
+	.in-orbit-card {
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+		padding: 0;
+		color: var(--color-text);
+		transition: border-color 0.2s ease;
+	}
+
+	.in-orbit-card:hover {
+		border-color: var(--color-lime);
+		color: var(--color-text);
+	}
+
+	.in-orbit-card:focus-visible {
+		outline: 2px solid var(--color-lime);
+		outline-offset: 2px;
+	}
+
+	.in-orbit-card__media {
+		position: relative;
+		aspect-ratio: 16 / 9;
+		overflow: hidden;
+		background: rgba(255, 255, 255, 0.04);
+	}
+
+	.in-orbit-card__image {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center top;
+		outline: 1px solid rgba(0, 0, 0, 0.1);
+		outline-offset: -1px;
+	}
+
+	.in-orbit-card__body {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+		padding: 28px 30px 30px;
+		min-width: 0;
+	}
+
+	.in-orbit-card__meta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+	}
+
+	.in-orbit-card__status {
+		font-size: 12px;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--color-lime);
+	}
+
+	.in-orbit-card__status--lilac {
+		color: var(--color-lilac);
+	}
+
+	.in-orbit-card__index {
+		font-size: 11px;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: rgba(255, 255, 255, 0.62);
+	}
+
+	.in-orbit-card__name {
+		font-family: var(--font-display);
+		font-size: 26px;
+		margin: 0;
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		font-variation-settings: "wdth" 118;
+		color: #ffffff;
+		text-wrap: balance;
+	}
+
+	.in-orbit-card__description {
+		margin: 0;
+		font-size: 15px;
+		line-height: 1.6;
+		color: rgba(255, 255, 255, 0.78);
+		text-wrap: pretty;
+	}
+
+	.in-orbit-card__cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		align-self: flex-start;
+		min-height: 44px;
+		margin-top: 6px;
+		padding: 12px 22px;
+		font-size: 13px;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--color-text);
+		border: 1px solid rgba(255, 255, 255, 0.14);
+		border-radius: 10px;
+		background: rgba(255, 255, 255, 0.05);
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+		transition:
+			border-color 0.2s ease,
+			color 0.2s ease;
+	}
+
+	.in-orbit-card:hover .in-orbit-card__cta {
+		border-color: var(--color-lime);
+		color: var(--color-lime);
+	}
+
+	@media (max-width: 768px) {
+		.in-orbit__intro {
+			grid-template-columns: 1fr;
+			gap: 24px;
+		}
+	}
+</style>
