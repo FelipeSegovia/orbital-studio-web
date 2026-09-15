@@ -1,5 +1,16 @@
 ---
 import Logo from "./Logo.astro";
+import { site } from "../config/site";
+
+const { contactEmail, phone, phoneDisplay, city } = site;
+
+const sections = [
+	{ href: "#servicios", label: "Servicios" },
+	{ href: "#en-orbita", label: "En órbita" },
+	{ href: "#estudio", label: "El estudio" },
+	{ href: "#nosotros", label: "Nosotros" },
+	{ href: "#contacto", label: "Hablemos" },
+];
 ---
 
 <footer class="footer">
@@ -10,6 +21,19 @@ import Logo from "./Logo.astro";
 			<span class="footer__tagline-em">Diseñamos su futuro digital.</span>
 		</p>
 		<span class="footer__copy">© 2026 Orbital Studio</span>
+	</div>
+
+	<div class="container footer__meta">
+		<nav class="footer__nav" aria-label="Secciones">
+			{sections.map((section) => <a href={section.href}>{section.label}</a>)}
+		</nav>
+		<address class="footer__nap">
+			<span>{city}, Chile</span>
+			<span class="footer__dot" aria-hidden="true">·</span>
+			<a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+			<span class="footer__dot" aria-hidden="true">·</span>
+			<a href={`tel:${phone}`}>{phoneDisplay}</a>
+		</address>
 	</div>
 </footer>
 
@@ -50,6 +74,50 @@ import Logo from "./Logo.astro";
 	.footer__copy {
 		font-size: 13px;
 		color: rgba(255, 255, 255, 0.62);
+	}
+
+	.footer__meta {
+		padding-bottom: 44px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+		gap: 16px 32px;
+		border-top: 1px solid var(--color-border-soft);
+		padding-top: 24px;
+	}
+
+	.footer__nav {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px 24px;
+	}
+
+	.footer__nav a,
+	.footer__nap a {
+		font-size: 13.5px;
+		color: rgba(255, 255, 255, 0.62);
+		text-decoration: none;
+	}
+
+	.footer__nav a:hover,
+	.footer__nap a:hover {
+		color: var(--color-lime);
+	}
+
+	.footer__nap {
+		font-style: normal;
+		font-size: 13.5px;
+		color: rgba(255, 255, 255, 0.62);
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0 4px;
+	}
+
+	.footer__dot {
+		color: rgba(255, 255, 255, 0.3);
+		margin: 0 4px;
 	}
 
 	@media (max-width: 768px) {

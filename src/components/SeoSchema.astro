@@ -1,0 +1,101 @@
+---
+import { site } from "../config/site";
+import { designItems, devItems } from "../config/services";
+
+const base = site.url;
+const orgId = `${base}/#organization`;
+const siteId = `${base}/#website`;
+const personId = (slug: string) => `${base}/#/persona/${slug}`;
+
+const organization = {
+	"@type": "ProfessionalService",
+	"@id": orgId,
+	name: site.companyName,
+	url: base,
+	email: site.contactEmail,
+	telephone: site.phone,
+	description:
+		"Estudio de ingeniería y diseño digital en La Serena, Chile. Diseño gráfico, UX/UI, desarrollo web, integraciones y aplicaciones móviles.",
+	logo: `${base}/apple-touch-icon.png`,
+	image: `${base}/og.png`,
+	// Sin `streetAddress`: no hay dirección publicable. Omitirlo es válido;
+	// inventarlo rompería la consistencia NAP que estamos arreglando.
+	address: {
+		"@type": "PostalAddress",
+		addressLocality: site.city,
+		addressRegion: site.region,
+		addressCountry: site.country,
+	},
+	areaServed: {
+		"@type": "Country",
+		name: "Chile",
+	},
+	founder: site.founders.map((founder) => ({ "@id": personId(founder.slug) })),
+	contactPoint: {
+		"@type": "ContactPoint",
+		contactType: "customer service",
+		email: site.contactEmail,
+		telephone: site.phone,
+		availableLanguage: ["es"],
+	},
+	hasOfferCatalog: {
+		"@type": "OfferCatalog",
+		name: "Servicios de Orbital Studio",
+		itemListElement: [
+			{
+				"@type": "OfferCatalog",
+				name: "Diseño",
+				itemListElement: designItems.map((item) => ({
+					"@type": "Offer",
+					itemOffered: {
+						"@type": "Service",
+						name: item.label,
+						description: item.text,
+						serviceType: item.label,
+						provider: { "@id": orgId },
+					},
+				})),
+			},
+			{
+				"@type": "OfferCatalog",
+				name: "Desarrollo",
+				itemListElement: devItems.map((item) => ({
+					"@type": "Offer",
+					itemOffered: {
+						"@type": "Service",
+						name: item.label,
+						description: item.text,
+						serviceType: item.label,
+						provider: { "@id": orgId },
+					},
+				})),
+			},
+		],
+	},
+};
+
+const website = {
+	"@type": "WebSite",
+	"@id": siteId,
+	url: base,
+	name: site.companyName,
+	inLanguage: "es-CL",
+	publisher: { "@id": orgId },
+};
+
+const people = site.founders.map((founder) => ({
+	"@type": "Person",
+	"@id": personId(founder.slug),
+	name: founder.name,
+	jobTitle: founder.jobTitle,
+	worksFor: { "@id": orgId },
+	url: base,
+}));
+
+const graph = {
+	"@context": "https://schema.org",
+	"@graph": [organization, website, ...people],
+};
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(graph)} />

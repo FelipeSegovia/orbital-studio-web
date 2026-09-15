@@ -1,0 +1,5 @@
+# https://orbitalstudio.cl
+User-agent: *
+Allow: /
+
+Sitemap: https://orbitalstudio.cl/sitemap-index.xml

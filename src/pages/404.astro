@@ -1,0 +1,94 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+// Las secciones siguen siendo anclas de la home. Cuando existan rutas
+// reales (fase 2), solo cambian estos href.
+const links = [
+	{ href: "/#servicios", label: "Servicios" },
+	{ href: "/#en-orbita", label: "En órbita" },
+	{ href: "/#estudio", label: "El estudio" },
+	{ href: "/#nosotros", label: "Nosotros" },
+	{ href: "/#contacto", label: "Hablemos" },
+];
+---
+
+<Layout
+	title="Página no encontrada — Orbital Studio"
+	description="La página que buscas no existe o cambió de dirección."
+	noindex
+>
+	<div class="page">
+		<Header />
+		<main id="contenido" class="notfound">
+			<div class="container notfound__wrap">
+				<span class="eyebrow">Error 404</span>
+				<h1 class="section-heading">
+					<span class="light">Esta ruta no está </span>
+					<span class="bold italic">en órbita</span>
+				</h1>
+				<p class="notfound__text">
+					La página que buscas no existe o cambió de dirección. Desde aquí puedes volver al inicio o ir directo a lo que
+					necesitas.
+				</p>
+				<div class="notfound__actions">
+					<a class="btn-primary" href="/">Volver al inicio</a>
+					<a class="btn-secondary" href="/#contacto">Conversemos tu proyecto</a>
+				</div>
+				<ul class="notfound__links">
+					{links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+				</ul>
+			</div>
+		</main>
+		<Footer />
+	</div>
+</Layout>
+
+<style>
+	.notfound__wrap {
+		padding-top: 120px;
+		padding-bottom: 120px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 24px;
+	}
+
+	.notfound__text {
+		margin: 0;
+		font-size: 16px;
+		line-height: 1.65;
+		color: rgba(255, 255, 255, 0.7);
+		max-width: 52ch;
+		text-wrap: pretty;
+	}
+
+	.notfound__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 14px;
+	}
+
+	.notfound__links {
+		list-style: none;
+		margin: 8px 0 0;
+		padding: 20px 0 0;
+		border-top: 1px solid rgba(255, 255, 255, 0.12);
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px 28px;
+		width: 100%;
+	}
+
+	.notfound__links a {
+		font-size: 13.5px;
+		letter-spacing: 0.02em;
+		color: rgba(255, 255, 255, 0.62);
+		text-decoration: none;
+	}
+
+	.notfound__links a:hover {
+		color: var(--color-lime);
+	}
+</style>

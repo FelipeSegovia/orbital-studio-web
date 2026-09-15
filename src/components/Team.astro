@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import mauricioPhoto from "../assets/mauricio-diaz.png";
-import felipePhoto from "../assets/felipe-segovia.png";
+import mauricioPhoto from "../assets/mauricio-diaz.jpg";
+import felipePhoto from "../assets/felipe-segovia.jpg";
 import logoMark from "../assets/logo-mark.png";
 ---
 
@@ -47,6 +47,8 @@ import logoMark from "../assets/logo-mark.png";
 					alt="Mauricio Díaz, diseñador"
 					width={382}
 					height={616}
+					widths={[190, 380, 570]}
+					sizes="(max-width: 640px) 100vw, 190px"
 					loading="lazy"
 					decoding="async"
 				/>
@@ -77,6 +79,8 @@ import logoMark from "../assets/logo-mark.png";
 					alt="Felipe Segovia, ingeniero en computación"
 					width={380}
 					height={532}
+					widths={[190, 380, 570]}
+					sizes="(max-width: 640px) 100vw, 190px"
 					loading="lazy"
 					decoding="async"
 				/>

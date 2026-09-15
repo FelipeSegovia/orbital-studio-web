@@ -2,6 +2,7 @@
 import { site } from "../config/site";
 
 const email = site.contactEmail;
+const { phone, phoneDisplay, whatsapp, locationLabel } = site;
 ---
 
 <section id="contacto" class="contact">
@@ -22,8 +23,18 @@ const email = site.contactEmail;
 					<dd><a href={`mailto:${email}`}>{email}</a></dd>
 				</div>
 				<div class="contact__detail">
+					<dt>Teléfono</dt>
+					<dd>
+						<a href={`tel:${phone}`}>{phoneDisplay}</a>
+						<span class="contact__sep" aria-hidden="true">·</span>
+						<a href={`https://wa.me/${whatsapp}`} target="_blank" rel="noopener noreferrer">
+							WhatsApp<span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+						</a>
+					</dd>
+				</div>
+				<div class="contact__detail">
 					<dt>Dónde</dt>
-					<dd>La Serena, Chile — trabajamos remoto</dd>
+					<dd>{locationLabel}</dd>
 				</div>
 			</dl>
 		</div>
@@ -293,6 +304,11 @@ const email = site.contactEmail;
 		margin: 0;
 		font-size: 16px;
 		color: rgba(255, 255, 255, 0.8);
+	}
+
+	.contact__sep {
+		margin: 0 8px;
+		color: rgba(255, 255, 255, 0.3);
 	}
 
 	.contact__form {
