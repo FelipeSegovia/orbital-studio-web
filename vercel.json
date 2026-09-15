@@ -15,6 +15,25 @@
 					"value": "camera=(), microphone=(), geolocation=(), payment=()"
 				}
 			]
+		},
+		{
+			"//": "Assets con hash de contenido en el nombre: cambiar el archivo cambia la URL, así que son inmutables. La regla del adapter en .vercel/output/config.json declara esto mismo, pero producción no la aplica: servía max-age=0.",
+			"source": "/_astro/(.*)",
+			"headers": [
+				{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+			]
+		},
+		{
+			"//": "Las fuentes NO llevan hash: el nombre es estable. Para reemplazar una hay que renombrar el archivo, o el cliente servirá la vieja hasta un año.",
+			"source": "/fonts/(.*)",
+			"headers": [
+				{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+			]
+		},
+		{
+			"//": "Imagen social: nombre estable y la reescriben los scrapers. Un día de caché con revalidación.",
+			"source": "/og.png",
+			"headers": [{ "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }]
 		}
 	]
 }

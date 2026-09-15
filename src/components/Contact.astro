@@ -311,6 +311,12 @@ const { phone, phoneDisplay, whatsapp, locationLabel } = site;
 		color: rgba(255, 255, 255, 0.3);
 	}
 
+	/* phoneDisplay lleva espacios: sin esto el número se parte a media cifra
+	   en móvil, donde el dd es angosto. */
+	.contact__detail dd a[href^="tel:"] {
+		white-space: nowrap;
+	}
+
 	.contact__form {
 		padding: 34px;
 		display: flex;
